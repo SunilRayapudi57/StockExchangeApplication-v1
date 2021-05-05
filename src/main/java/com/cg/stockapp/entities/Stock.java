@@ -33,7 +33,6 @@ public class Stock {
 	private int quantity;
 
 //	@NotNull
-//	@Pattern(regexp = "(NSE|BSE)")
 	@Column(name = "TYPE")
 	private String type;
 
@@ -50,7 +49,6 @@ public class Stock {
 
 	@ManyToOne
 	@JoinColumn(name = "company_id")
-//	@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 	private Company company;
 
 	@JsonIgnore
