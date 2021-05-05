@@ -157,8 +157,8 @@ public class StockService implements IStockService {
 	}
 	
 	//Display all the Stocks by Investor
-	public List<Stock> viewStockAllByInvestor(String investorId){
-		log.info("viewAllInvestor() has been invoked");
+	public List<Stock> viewAllStockByInvestor(String investorId){
+		log.info("viewAllStockByInvestor() has been invoked");
 		if(!investorRepo.existsById(investorId)) {
 			throw new InvestorNotFoundException("Request", "Investor not found with id "+investorId);
 		}
