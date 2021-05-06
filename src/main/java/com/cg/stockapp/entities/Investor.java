@@ -34,8 +34,8 @@ public class Investor {
 	
 //	@NotNull
 //	@Range(min = 5, max = 20, message = "Username should be from 5 to 20 characters")
-	@Column(name = "INVESTOR_NAME")
-	private String investorName;
+	@Column(name = "NAME")
+	private String name;
 	
 //	@Pattern(regexp = "^[A-Za-z0-9._]+@[A-za-z0-9]+[.][A-za-z]{2,5}$", message = "Email is not valid")
 	@Column(name = "EMAIL")
@@ -56,9 +56,8 @@ public class Investor {
 	@Column(name = "GENDER")
 	private String gender;
 	
-	@JsonIgnore
 	@Column(name = "STATUS")
-	private String status = "pending"; // approved or pending
+	private String status; // approved or pending
 	
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
@@ -70,11 +69,11 @@ public class Investor {
 	@ManyToMany(mappedBy = "investors", fetch = FetchType.LAZY)
 	private List<Stock> stocks = new ArrayList<>();
 	
-	public Investor(String investorId, String investorName, String email, String password, String mobileNo,
+	public Investor(String investorId, String name, String email, String password, String mobileNo,
 			String gender) {
 		super();
 		this.investorId = investorId;
-		this.investorName = investorName;
+		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.mobileNo = mobileNo;
@@ -107,11 +106,11 @@ public class Investor {
 	public void setInvestorId(String investorId) {
 		this.investorId = investorId;
 	}
-	public String getInvestorName() {
-		return investorName;
+	public String getName() {
+		return name;
 	}
-	public void setInvestorName(String investorName) {
-		this.investorName = investorName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getEmail() {
 		return email;

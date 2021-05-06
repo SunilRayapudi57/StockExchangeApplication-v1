@@ -63,6 +63,7 @@ public class InvestorServiceImpl implements InvestorService {
 			log.warn("DuplicateInvesterException : Investor already exists with id " + investorId);
 			throw new DuplicateInvesterException("Investor already exists with id " + investorId);
 		} else {
+			investor.setStatus("pending");
 			investorRepo.save(investor);
 			log.info("A new Investor with id " + investorId + " has been added");
 			return true;
@@ -110,6 +111,7 @@ public class InvestorServiceImpl implements InvestorService {
 		log.info("updateInvestor() has been invoked");
 		String investorId = investor.getInvestorId();
 		if (investorRepo.existsById(investorId)) {
+			investor.setStatus("pending");
 			investorRepo.save(investor);
 			log.info("Investor with id " + investorId + " has been updated");
 			return true;
@@ -175,14 +177,14 @@ public class InvestorServiceImpl implements InvestorService {
 		investor.addStock(stock);
 		investorRepo.save(investor);
 
-		log.info("Investor " + investor.getInvestorName() + " has bought a Stock of "
+		log.info("Investor " + investor.getName() + " has bought a Stock of "
 				+ stock.getCompany().getCompanyName());
 
 		return true;
 
 	}
 
-	// Sell all the Stocks
+	// Sell Stock
 	@Override
 	public boolean sellStock(String investorId, String stockId) {
 		log.info("sellStock() has been invoked");
@@ -207,7 +209,7 @@ public class InvestorServiceImpl implements InvestorService {
 		investor.removeStock(stock);
 		investorRepo.save(investor);
 
-		log.info("Investor " + investor.getInvestorName() + " has sold a stock of "
+		log.info("Investor " + investor.getName() + " has sold a stock of "
 				+ stock.getCompany().getCompanyName());
 		return true;
 	}
