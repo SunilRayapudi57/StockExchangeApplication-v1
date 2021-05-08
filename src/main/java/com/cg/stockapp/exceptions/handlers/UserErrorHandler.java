@@ -19,11 +19,12 @@ public class UserErrorHandler extends ResponseEntityExceptionHandler{
 	@ExceptionHandler(DuplicateUserException.class)
 	public ResponseEntity<?> handleDuplicateUser(DuplicateUserException due) {
 		Map<String, Object> errorbody = new LinkedHashMap<>();
+		errorbody.put("errorMessage", due.getMessage());
 		errorbody.put("error", "Creation failed");
 		errorbody.put("timestamp", LocalDateTime.now());
-		errorbody.put("details", due.getMessage());
+		
 
-		return new ResponseEntity<>(errorbody, HttpStatus.CONFLICT);
+		return new ResponseEntity<>(errorbody, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(UserNotFoundException.class)

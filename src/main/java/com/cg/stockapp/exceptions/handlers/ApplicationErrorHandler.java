@@ -28,7 +28,7 @@ public class ApplicationErrorHandler extends ResponseEntityExceptionHandler {
 				.collect(Collectors.toList()); 
 
 		Map<String, Object> errorBody = new LinkedHashMap<>();
-		errorBody.put("error", errorList);
+		errorBody.put("errors", errorList);
 		errorBody.put("Timestamp", LocalDateTime.now());
 		errorBody.put("details", "Data recieved is not valid");
 		return new ResponseEntity<Object>(errorBody, HttpStatus.BAD_REQUEST);

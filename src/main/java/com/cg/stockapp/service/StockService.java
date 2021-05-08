@@ -1,7 +1,5 @@
 package com.cg.stockapp.service;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 

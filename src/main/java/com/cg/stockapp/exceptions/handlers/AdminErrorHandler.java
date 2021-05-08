@@ -23,7 +23,7 @@ public class AdminErrorHandler extends ResponseEntityExceptionHandler{
 		errorbody.put("timestamp", LocalDateTime.now());
 		errorbody.put("details", dae.getMessage());
 
-		return new ResponseEntity<>(errorbody, HttpStatus.CONFLICT);
+		return new ResponseEntity<>(errorbody, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(AdminNotFoundException.class)

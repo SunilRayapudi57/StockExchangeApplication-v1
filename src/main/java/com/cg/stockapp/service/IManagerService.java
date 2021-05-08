@@ -17,6 +17,6 @@ public interface IManagerService {
 
 	public boolean deleteManager(String managerId);
 	
-	public Manager getManager(Company company);
+	public Manager getManagerByCompany(String companyId);
 	
 }

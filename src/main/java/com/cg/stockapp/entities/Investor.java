@@ -44,8 +44,8 @@ public class Investor {
 //	@NotNull
 //	@Pattern(regexp = "[A-Za-z]+[0-9]+[!@#$%^&*]+", message = "Password should atleast contain a digit and a special character")
 //	@Length(min = 7, max = 20, message = "Username should be from 7 to 20 characters")
-	@Column(name = "PASSWORD")
-	private String password;
+//	@Column(name = "PASSWORD")
+//	private String password;
 	
 //	@NotNull
 //	@Pattern(regexp = "[0-9]{10}", message = "Invalid Mobile number")
@@ -62,20 +62,18 @@ public class Investor {
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="accountNo")
-//	@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 	private BankAccount account;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "investors", fetch = FetchType.LAZY)
 	private List<Stock> stocks = new ArrayList<>();
 	
-	public Investor(String investorId, String name, String email, String password, String mobileNo,
+	public Investor(String investorId, String name, String email, String mobileNo,
 			String gender) {
 		super();
 		this.investorId = investorId;
 		this.name = name;
 		this.email = email;
-		this.password = password;
 		this.mobileNo = mobileNo;
 		this.gender = gender;
 	}
@@ -117,12 +115,6 @@ public class Investor {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	public String getMobileNo() {
 		return mobileNo;

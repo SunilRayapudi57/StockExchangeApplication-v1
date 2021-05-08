@@ -31,11 +31,9 @@ public class Company {
 //	@Range(min = 4, max = 25)
 	private String companyName;
 	
-//	@JsonIgnore
-//	@OneToOne(cascade=CascadeType.ALL)
-//	@JoinColumn(name="managerId")
-//	private Manager manager;
-	
+	@Column(name = "MANAGER_ID")
+	private String managerId;
+
 	@Column(name = "CATEGORY")
 	private String category;
 	
@@ -47,10 +45,11 @@ public class Company {
 	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
 	private List<Stock> stocks = new ArrayList<>();
 
-	public Company(String companyId, String companyName, String category) {
+	public Company(String companyId, String companyName, String managerId, String category) {
 		super();
 		this.companyId = companyId;
 		this.companyName = companyName;
+		this.managerId = managerId;
 		this.category = category;
 	}
 
@@ -65,13 +64,13 @@ public class Company {
 		this.stocks.remove(stock);
 	}
 	
-//	public Manager getManager() {
-//		return manager;
-//	}
-//
-//	public void setManager(Manager manager) {
-//		this.manager = manager;
-//	}
+	public String getManagerId() {
+		return managerId;
+	}
+
+	public void setManagerId(String managerId) {
+		this.managerId = managerId;
+	}
 
 	public int getNoOfStocks() {
 		return noOfStocks;

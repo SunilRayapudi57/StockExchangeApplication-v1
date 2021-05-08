@@ -23,7 +23,7 @@ public class CompanyErrorHandler extends ResponseEntityExceptionHandler{
 		errorbody.put("timestamp", LocalDateTime.now());
 		errorbody.put("details", dce.getMessage());
 
-		return new ResponseEntity<>(errorbody, HttpStatus.ALREADY_REPORTED);
+		return new ResponseEntity<>(errorbody, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(CompanyNotFoundException.class)

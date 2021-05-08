@@ -9,6 +9,6 @@ import com.cg.stockapp.entities.Manager;
 @Repository
 public interface ManagerRepository extends JpaRepository<Manager, String>{
 	
-	public Manager findByCompany(Company company);
+//	public Manager findByCompany(Company company);
 	
 }
